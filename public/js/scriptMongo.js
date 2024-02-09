@@ -3,9 +3,9 @@ const addCards = (items) => {
         let itemToAppend = '<div class="col s4 center-align">'+
                 '<div class="card medium"><div class="card-image waves-effect waves-block waves-light"><img class="activator" src="'+item.path+'">'+
                 '</div><div class="card-content">'+
-                '<span class="card-title activator grey-text text-darken-4">'+item.title+'<i class="material-icons right">more_vert</i></span><p><a href="#"></a></p></div>'+
+                '<span class="card-title activator grey-text text-darken-4">'+item.name+'<i class="material-icons right">more_vert</i></span><p><a href="#"></a></p></div>'+
                 '<div class="card-reveal">'+
-                '<span class="card-title grey-text text-darken-4">'+item.subTitle+'<i class="material-icons right">close</i></span>'+
+                '<span class="card-title grey-text text-darken-4">'+item.country+'<i class="material-icons right">close</i></span>'+
                 '<p class="card-text">'+item.description+'</p>'+
                 '</div></div></div>';
         $("#card-section").append(itemToAppend)
@@ -14,30 +14,30 @@ const addCards = (items) => {
 
 const formSubmitted = () => {
     let formData = {};
-    formData.title = $('#title').val();
-    formData.subTitle = $('#subTitle').val();
+    formData.name = $('#name').val();
+    formData.country = $('#country').val();
     formData.path = $('#path').val();
     formData.description = $('#description').val();
 
     console.log(formData);
-    postCat(formData);
+    postCricketPlayer(formData);
 }
 
-function postCat(cat){
+function postCricketPlayer(cricketPlayer){
     $.ajax({
-        url:'/api/cat',
+        url:'/api/cricket-player',
         type:'POST',
-        data:cat,
+        data:cricketPlayer,
         success: (result)=>{
             if (result.statusCode === 201) {
-                alert('cat post successful');
+                alert('Cricket player post successful!');
             }
         }
     });
 }
 
-function getAllCats(){
-    $.get('/api/cats', (response)=>{
+function getAllCricketPlayers(){
+    $.get('/api/cricket-players', (response)=>{
         // response's data is in array format, so we can use it
         if (response.statusCode === 200) {
             addCards(response.data);
@@ -51,5 +51,5 @@ $(document).ready(function(){
         formSubmitted();
     });
     $('.modal').modal();
-    getAllCats();
+    getAllCricketPlayers();
 });
