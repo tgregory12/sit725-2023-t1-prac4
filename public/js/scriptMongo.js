@@ -1,4 +1,4 @@
-const addCards = (items) => {
+const addCollection = (items) => {
     items.forEach(item => {
         let itemToAppend = `<li class="collection-item avatar">
         <img src="${item.path}" alt="" class="circle">
@@ -40,7 +40,7 @@ function getAllCricketPlayers(){
     $.get('/api/cricket-players', (response)=>{
         // response's data is in array format, so we can use it
         if (response.statusCode === 200) {
-            addCards(response.data);
+            addCollection(response.data);
         }
     });
 }
