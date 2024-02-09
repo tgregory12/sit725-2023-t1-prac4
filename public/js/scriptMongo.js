@@ -1,14 +1,14 @@
 const addCards = (items) => {
     items.forEach(item => {
-        let itemToAppend = '<div class="col s4 center-align">'+
-                '<div class="card medium"><div class="card-image waves-effect waves-block waves-light"><img class="activator" src="'+item.path+'">'+
-                '</div><div class="card-content">'+
-                '<span class="card-title activator grey-text text-darken-4">'+item.name+'<i class="material-icons right">more_vert</i></span><p><a href="#"></a></p></div>'+
-                '<div class="card-reveal">'+
-                '<span class="card-title grey-text text-darken-4">'+item.country+'<i class="material-icons right">close</i></span>'+
-                '<p class="card-text">'+item.description+'</p>'+
-                '</div></div></div>';
-        $("#card-section").append(itemToAppend)
+        let itemToAppend = `<li class="collection-item avatar">
+        <img src="${item.path}" alt="" class="circle">
+        <span class="name" style="color:black">Name: ${item.name}</span>
+        <p style="color:black">Country: ${item.country} <br>
+        Description: ${item.description}
+        </p>
+        <a href="#!" class="secondary-content"><i class="material-icons">grade</i></a>
+      </li>`;
+        $("#collection-section").append(itemToAppend)
     });
 }
 
